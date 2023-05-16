@@ -1,30 +1,38 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CategoryComponent } from './category/category.component';
+import { ProductComponent } from './products/products.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PagesComponent } from './pages.component';
-import { NoFoundPageComponent } from '../noFoundPage/no-found-page.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProductsComponent } from './products/products.component';
+import { AuthModule } from '../auth/auth.module';
 
-const routes:Routes = [
-  //rutas protegidas
-  {path:'dashboard', component: PagesComponent, 
-  children: [
-  {path:'', component: DashboardComponent},
-  {path:'products', component: ProductsComponent},
-  {path:'categories', component: CategoriesComponent},
-  {path:'', redirectTo:'/dashboard', pathMatch:'full'},
-  ]},
-  /*
-  {path:'**', component: NoFoundPageComponent},*/
-];
+
+
+const routes: Routes = [
+  //rutas protegidad
+
+  {
+    path: 'dashboard', component: PagesComponent,
+    children: [
+      { path:'', component: DashboardComponent },
+      { path: 'category', component: CategoryComponent },
+      { path: 'product', component: ProductComponent },
+      {path:'',redirectTo:'/dashboard',pathMatch:'full'},
+    ]
+  }
+  //{path:'**',component:NoFoundComponent},
+
+
+]
+
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    AuthModule,
   ]
 })
 export class PagesRoutingModule { }
