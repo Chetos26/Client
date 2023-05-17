@@ -6,11 +6,11 @@
     <div class="card-body">
       <div class="mb-3">
         <label for="title" class="form-label">Producto</label>
-        <input type="text" name="title" id="title" value="{{selectedProduct.title}}" class="form-control">
+        <input [(ngModel)]="selectedProduct.title" type="text" name="title" id="title" value="{{selectedProduct.title}}" class="form-control">
         <label for="price" class="form-label">Precio</label>
-        <input type="text" name="price" id="price" value="{{selectedProduct.price}}" class="form-control">
+        <input [(ngModel)]="selectedProduct.price" type="text" name="price" id="price" value="{{selectedProduct.price}}" class="form-control">
         <label for="description">Descripcion</label>
-        <input type="textarea" name="description" id="description" value="{{selectedProduct.description}}">
+        <input [(ngModel)]="selectedProduct.description" type="textarea" name="description" id="description" value="{{selectedProduct.description}}">
       </div>
       <div class="card-footer text-muted">
         <button (click)="updateProduct()">Actualizar</button>

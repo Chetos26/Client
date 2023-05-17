@@ -20,9 +20,9 @@ import { NoFoundPageComponent } from './noFoundPage/no-found-page.component';
     imports: [
         BrowserModule,
         HttpClientModule,
-      AppRoutingModule,
+        AppRoutingModule,
         PagesModule,
-      SharedModule,
+        SharedModule,
         AuthModule
     ]
 })

@@ -10,7 +10,9 @@ import { ProductHttpService } from 'src/app/services/products.service';
 export class ProductComponent implements OnInit {
 
   products: ProductModel[] = [];
-  selectedProduct: UpdateProductModelDto={}
+  selectedProduct: UpdateProductModelDto={
+    id: 0
+  }
 
   constructor(private productHttpService: ProductHttpService) {}
 
@@ -18,7 +20,7 @@ export class ProductComponent implements OnInit {
     this.getProducts();
     //this.getProduct();
     //this.createProduct();
-    //this.updateProduct();
+    this.updateProduct();
     //this.deleteProduct(34);
   }
  getProducts(){
@@ -51,12 +53,7 @@ export class ProductComponent implements OnInit {
   this.selectedProduct = product
  }
  updateProduct(){
-  const data = {
-    title: 'Zapatillas deportivas',
-    price: 1150,
-    description: 'Zapatillas 40',
-  };
-  this.productHttpService.update(498,data).subscribe(
+  this.productHttpService.update(this.selectedProduct.id, this.selectedProduct).subscribe(
     response => {
       console.log(response)})
  }
